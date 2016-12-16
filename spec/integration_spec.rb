@@ -40,14 +40,14 @@ describe('selecting opposite class from dropdown menu and assigning to current c
       click_link('Foot Locker')
       select('Toms', :from => 'brand_name')
       click_button('Add Brand Affiliate')
-      expect(page).to have_content("Toms")
+      expect(page).to have_content("You added a new affiliate")
     end
     it('fills out store name form and submits') do
       visit('/')
       click_link('Toms')
       select('Foot Locker', :from => 'store_name')
       click_button('Add Store Affiliate')
-      expect(page).to have_content("Foot Locker")
+      expect(page).to have_content("You added a new affiliate")
     end
   end
 end
@@ -74,9 +74,9 @@ describe('index page brand and store navigation') do
     it('updates a brand') do
       visit('/')
       first(:link, 'Update Brand Name').click
-      fill_in("brand_name", :with => "REI")
+      fill_in("brand_name", :with => "rei")
       click_button("Submit")
-      expect(page).to have_content("REI")
+      expect(page).to have_content("Rei")
     end
   end
   describe('deletes classes', {:type => :feature}) do
@@ -89,6 +89,23 @@ describe('index page brand and store navigation') do
       visit('/')
       first(:button, 'Delete Brand').click
       expect(page).to have_content("Stores and Brands")
+    end
+  end
+end
+
+describe('tests for validation and callback on both classes') do
+  describe('tests for titleize callback', {:type => :feature}) do
+    it('runs callback test on store input') do
+      visit('/')
+      fill_in("store_name", :with => "home depot")
+      click_button("Register New Store")
+      expect(page).to have_content("Home Depot")
+    end
+    it('runs validation test on brand input') do
+      visit('/')
+      fill_in("brand_name", :with => "puma sport")
+      click_button("Register New Brand")
+      expect(page).to have_content("Puma Sport")
     end
   end
 end
