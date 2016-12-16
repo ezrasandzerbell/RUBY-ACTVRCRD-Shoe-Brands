@@ -1,3 +1,9 @@
-<h2>You added <%=@store.name %> as a <%= @brand.name%> affiliate.</h2>
-
-<a href="/brands/<%=@brand.id%>">Back to <%= @brand.name%> Page</a>
+<div class="panel panel-primary">
+  <div class="panel panel-heading object_title">
+    <center><h1><%=@brand.name%></h1></center>
+  </div>
+  <div class="panel panel-body">
+    <center><h2>You added <%=@store.name %> as an affiliate.</h2></center>
+  </div>
+  <center><h3><a href="/brands/<%=@brand.id%>">Back to <%= @brand.name%> Page</a></h3></center>
+</div>

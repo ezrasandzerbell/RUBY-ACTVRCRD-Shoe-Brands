@@ -3,27 +3,36 @@
     <center><h1><%=@brand.name%></h1></center>
   </div>
   <div class="panel panel-body">
-    <% if @brand.stores != []%>
-    <ul>
-      <% @brand.stores.each do |store| %>
-      <li><h2><a href="/stores/<%=store.id%>"><%= store.name %></a><h2></li>
-      <%end%>
-    </ul>
-    <%end%>
-    <form class="form-group" action="/brands/<%=@brand.id%>/store" method="post">
-      <% if @stores != []%>
-        <select class="form-control" name="store_name">
-          <% @stores.each do |store| %>
-            <option><%=store.name%></option>
-          <% end %>
-        </select>
-      <% end %>
-      <button type="submit" class="btn btn-primary">Add Store Affiliate</button>
-    </form>
+    <div class="row">
+      <div class="col-md-6">
+        <center>
+          <h2>Affiliates:</h2>
+          <% if @brand.stores != []%>
+            <% @brand.stores.each do |store| %>
+            <h2><a href="/stores/<%=store.id%>"><%= store.name %></a><h2>
+            <%end%>
+          <% else %>
+          <h2>No affiliates currently registered</h2>
+          <%end%>
+        </center>
+      </div>
+      <div class="col-md-6">
+        <center>
+          <form class="form-group" action="/brands/<%=@brand.id%>/store" method="post">
+            <% if @stores != []%>
+              <label for="brand_name"><h4>Register New Affiliate</h4></label>
+              <select class="form-control resize_menu" name="store_name">
+                <% @stores.each do |store| %>
+                  <option><%=store.name%></option>
+                <% end %>
+              </select>
+            <% end %>
+            <br>
+            <button type="submit" class="btn btn-primary btn-lg">Add Store Affiliate</button>
+          </form>
+        </center>
+      </div>
+    </div>
+    <center><h3><a href="/">Return to Main Page</a></h3></center>
   </div>
 </div>
-
-
-
-
-<center><h3><a href="/">Return to Main Page</a></h3></center>
