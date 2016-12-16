@@ -1,3 +1,24 @@
 <center><h1><%=@brand.name%></h1></center>
 
-<a href="/">Return to Main Page</a>
+  <% if @brand.stores != []%>
+  <ul>
+    <% @brand.stores.each do |store| %>
+    <li><h2><a href="/stores/<%=store.id%>"><%= store.name %></a><h2></li>
+    <%end%>
+  </ul>
+  <%end%>
+
+  <form class="form-group" action="/brands/<%=@brand.id%>/store" method="post">
+    <% if @stores != []%>
+      <select class="form-control" name="store_name">
+        <% @stores.each do |store| %>
+          <option><%=store.name%></option>
+        <% end %>
+      </select>
+    <% end %>
+    <button type="submit" class="btn btn-primary">Add Store Affiliate</button>
+  </form>
+
+
+
+<center><h3><a href="/">Return to Main Page</a></h3></center>

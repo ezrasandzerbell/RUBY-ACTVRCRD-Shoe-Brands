@@ -32,3 +32,20 @@ describe('creating instances of brand and store class') do
     end
   end
 end
+
+describe('selecting opposite class from dropdown menu and assigning to current class') do
+  describe('assign brands to a store', {:type => :feature}) do
+    it('selects brand from dropdown and submits form') do
+      visit('/')
+      click_link('Foot Locker')
+      select('Toms', :from => 'brand_name')
+      expect(page).to have_content("Toms")
+    end
+    it('fills out store name form and submits') do
+      visit('/')
+      click_link('Toms')
+      select('Foot Locker', :from => 'store_name')
+      expect(page).to have_content("Foot Locker")
+    end
+  end
+end
