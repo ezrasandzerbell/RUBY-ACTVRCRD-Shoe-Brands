@@ -64,5 +64,19 @@ describe('navigation') do
       first(:link, 'Update Brand Name').click
       expect(page).to have_content("Change the Brand's Name")
     end
+    it('updates a store') do
+      visit('/')
+      first(:link, 'Update Store Name').click
+      fill_in("store_name", :with => "Target")
+      click_button("Submit")
+      expect(page).to have_content("Target")
+    end
+    it('updates a brand') do
+      visit('/')
+      first(:link, 'Update Brand Name').click
+      fill_in("brand_name", :with => "REI")
+      click_button("Submit")
+      expect(page).to have_content("REI")
+    end
   end
 end
