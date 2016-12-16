@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: branding
+test:
+  adapter: postgresql
+  database:  branding_test
