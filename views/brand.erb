@@ -1,23 +1,28 @@
-<center><h1><%=@brand.name%></h1></center>
-
-  <% if @brand.stores != []%>
-  <ul>
-    <% @brand.stores.each do |store| %>
-    <li><h2><a href="/stores/<%=store.id%>"><%= store.name %></a><h2></li>
+<div class="panel panel-primary">
+  <div class="panel panel-heading object_title">
+    <center><h1><%=@brand.name%></h1></center>
+  </div>
+  <div class="panel panel-body">
+    <% if @brand.stores != []%>
+    <ul>
+      <% @brand.stores.each do |store| %>
+      <li><h2><a href="/stores/<%=store.id%>"><%= store.name %></a><h2></li>
+      <%end%>
+    </ul>
     <%end%>
-  </ul>
-  <%end%>
+    <form class="form-group" action="/brands/<%=@brand.id%>/store" method="post">
+      <% if @stores != []%>
+        <select class="form-control" name="store_name">
+          <% @stores.each do |store| %>
+            <option><%=store.name%></option>
+          <% end %>
+        </select>
+      <% end %>
+      <button type="submit" class="btn btn-primary">Add Store Affiliate</button>
+    </form>
+  </div>
+</div>
 
-  <form class="form-group" action="/brands/<%=@brand.id%>/store" method="post">
-    <% if @stores != []%>
-      <select class="form-control" name="store_name">
-        <% @stores.each do |store| %>
-          <option><%=store.name%></option>
-        <% end %>
-      </select>
-    <% end %>
-    <button type="submit" class="btn btn-primary">Add Store Affiliate</button>
-  </form>
 
 
 
