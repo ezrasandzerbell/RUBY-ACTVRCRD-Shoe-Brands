@@ -39,12 +39,14 @@ describe('selecting opposite class from dropdown menu and assigning to current c
       visit('/')
       click_link('Foot Locker')
       select('Toms', :from => 'brand_name')
+      click_button('Add Brand Affiliate')
       expect(page).to have_content("Toms")
     end
     it('fills out store name form and submits') do
       visit('/')
       click_link('Toms')
       select('Foot Locker', :from => 'store_name')
+      click_button('Add Store Affiliate')
       expect(page).to have_content("Foot Locker")
     end
   end

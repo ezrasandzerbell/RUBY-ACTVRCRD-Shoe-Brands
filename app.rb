@@ -38,17 +38,22 @@ get('/stores/:id') do
 end
 
 post('/brands/:id/store')do
-  Store.create({:name => params.fetch("store_name"), :brand_id => params.fetch("id")})
-  @brand = Brand.find(params.fetch("id"))
+  store = Store.find_by_name(params.fetch("store_name"))
+  store.update({:brand_id => params.fetch("id")})
+  store_id = store.id
+  brand = Brand.find(params.fetch("id"))
+  brand.update({:store_id => store_id})
+  @brand = brand
   @brands = Brand.all
-  @stores = Store.all
+  @stores = @brand.stores
   erb(:brand)
 end
 
 post('/stores/:id/brand')do
-  Brand.create({:name => params.fetch("brand_name"), :store_id => params.fetch("id")})
+  brand = Brand.find_by_name(params.fetch("brand_name"))
+  brand.update({:store_id => params.fetch("id")})
   @store = Store.find(params.fetch("id"))
-  @brands = Brand.all
+  @brands = @store.brands
   @stores = Store.all
   erb(:store)
 end
