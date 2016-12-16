@@ -37,21 +37,44 @@
     <div class="row">
       <div class="col-md-6">
         <% if @brands != []%>
-        <ul>
           <% @brands.each do |brand| %>
-          <li><a href="/brands/<%=brand.id%>"><%= brand.name %></a></li>
+            <div class="row">
+              <div class="col-md-4">
+                <h4><a href="/brands/<%=brand.id%>"><%= brand.name %></a><h4>
+              </div>
+              <div class="col-md-4">
+                <a href="/brands/<%=brand.id%>/edit"><button type="button" class="btn btn-primary">Update Name</button></a>
+              </div>
+              <div class="col-md-4">
+                <form action="/" method="post">
+                  <input type="hidden" name="_method" value="delete">
+                  <button type="submit" class="btn btn-danger">Delete Brand</button>
+                </form>
+              </div>
+            </div>
           <%end%>
-        </ul>
         <%end%>
       </div>
       <div class="col-md-6">
         <% if @stores != []%>
-        <ul>
           <% @stores.each do |store| %>
-          <li><a href="/stores/<%=store.id%>"><%= store.name %></a></li>
+            <div class="row">
+              <div class="col-md-4">
+                <h4><a href="/stores/<%=store.id%>"><%= store.name %></a><h4>
+              </div>
+              <div class="col-md-4">
+                <a href="/stores/<%=store.id%>/edit"><button type="button" class="btn btn-primary">Update Store</button></a>
+              </div>
+              <div class="col-md-4">
+                <form action="/delete_store" method="post">
+                  <input type="hidden" name="_method" value="delete">
+                  <button type="submit" class="btn btn-danger">Delete Store</button>
+                </form>
+              </div>
+            </div>
           <%end%>
-        </ul>
         <%end%>
+        </div>
       </div>
     </div>
   </div>
