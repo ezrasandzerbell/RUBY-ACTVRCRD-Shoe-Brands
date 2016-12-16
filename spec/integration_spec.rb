@@ -52,7 +52,7 @@ describe('selecting opposite class from dropdown menu and assigning to current c
   end
 end
 
-describe('navigation') do
+describe('index page brand and store navigation') do
   describe('update classes', {:type => :feature}) do
     it('creates a store') do
       visit('/')
@@ -77,6 +77,18 @@ describe('navigation') do
       fill_in("brand_name", :with => "REI")
       click_button("Submit")
       expect(page).to have_content("REI")
+    end
+  end
+  describe('deletes classes', {:type => :feature}) do
+    it('deletes a store') do
+      visit('/')
+      first(:link, 'Delete Store').click
+      expect(page).to have_content("Stores and Brands")
+    end
+    it('deletes a brand') do
+      visit('/')
+      first(:link, 'Delete Brand').click
+      expect(page).to have_content("Stores and Brands")
     end
   end
 end

@@ -46,7 +46,7 @@
                 <a href="/brands/<%=brand.id%>/edit"><button type="button" class="btn btn-primary">Update Brand Name</button></a>
               </div>
               <div class="col-md-4">
-                <form action="/" method="post">
+                <form action="/brands/<%=brand.id%>" method="post">
                   <input type="hidden" name="_method" value="delete">
                   <button type="submit" class="btn btn-danger">Delete Brand</button>
                 </form>
@@ -66,7 +66,7 @@
                 <a href="/stores/<%=store.id%>/edit"><button type="button" class="btn btn-primary">Update Store Name</button></a>
               </div>
               <div class="col-md-4">
-                <form action="/delete_store" method="post">
+                <form action="/stores/<%=store.id%>" method="post">
                   <input type="hidden" name="_method" value="delete">
                   <button type="submit" class="btn btn-danger">Delete Store</button>
                 </form>
