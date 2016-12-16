@@ -28,6 +28,31 @@
           <button type="submit" class="btn btn-primary">Register New Store</button>
         </form>
       </div>
+    </div>
   </div>
+</div>
 
+<div class="panel panel-primary">
+  <div class="panel panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <% if @brands != []%>
+        <ul>
+          <% @brands.each do |brand| %>
+          <li><%= brand.name %></li>
+          <%end%>
+        </ul>
+        <%end%>
+      </div>
+      <div class="col-md-6">
+        <% if @stores != []%>
+        <ul>
+          <% @stores.each do |store| %>
+          <li><%= store.name %></li>
+          <%end%>
+        </ul>
+        <%end%>
+      </div>
+    </div>
+  </div>
 </div>
