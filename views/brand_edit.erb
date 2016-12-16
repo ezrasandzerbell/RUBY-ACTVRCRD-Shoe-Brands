@@ -1,0 +1,8 @@
+<h2> Change the Brand's Name </h2>
+
+Current name: <%= @brand.name%>
+
+<form class="form-group" action="/brands/<%=@brand.id%>" method="post">
+  <input type="text" name="brand_name" placeholder="Enter new brand name">
+  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+</form>

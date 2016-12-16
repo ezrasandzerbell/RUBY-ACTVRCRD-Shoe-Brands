@@ -1,0 +1,8 @@
+<h2> Change the Store's Name </h2>
+
+Current name: <%= @store.name%>
+
+<form class="form-group" action="/stores/<%=@store.id%>" method="post">
+  <input type="text" name="store_name" placeholder="Enter new store name">
+  <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+</form>

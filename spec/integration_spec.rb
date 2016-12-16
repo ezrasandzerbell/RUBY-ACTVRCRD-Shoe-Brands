@@ -57,12 +57,12 @@ describe('navigation') do
     it('creates a store') do
       visit('/')
       first(:link, 'Update Store Name').click
-      expect(page).to have_content("Hello World")
+      expect(page).to have_content("Change the Store's Name")
     end
-    it('creates a store') do
+    it('creates a brand') do
       visit('/')
       first(:link, 'Update Brand Name').click
-      expect(page).to have_content("Hello World")
+      expect(page).to have_content("Change the Brand's Name")
     end
   end
 end
