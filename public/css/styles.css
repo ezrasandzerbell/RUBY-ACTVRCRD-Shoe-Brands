@@ -1,0 +1,38 @@
+.header {
+  display: block;
+  width: 100%;
+  min-width: 960px;
+  background: #c40e0e;
+  float: left;
+  font-size: 86px;
+  color: white;
+  z-index: 1;
+  position: relative;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.float_left {
+  float: left;
+  margin-left: 25px;
+  margin-right: 0px;
+  width: 200px;
+}
+
+.site_title {
+  margin-top: 4%;
+  margin-right: 17%;
+  float: right;
+}
+
+.object_title {
+  padding-top: 17%;
+}
+
+.resize_menu {
+  width: 185px;
+  font-size: 20px;
+}
+
+ul {
+  list-style-type: none;
+}

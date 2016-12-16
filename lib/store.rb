@@ -1,5 +1,5 @@
 class Store < ActiveRecord::Base
-  has_many(:brands)
+  has_and_belongs_to_many(:brands)
   before_save(:capitalize_name)
   validates(:name, :uniqueness => {:case_sensitive => false})
 
