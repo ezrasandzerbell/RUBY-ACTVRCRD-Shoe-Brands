@@ -18,18 +18,20 @@
       </div>
       <div class="col-md-6">
         <center>
-          <form class="form-group" action="/brands/<%=@brand.id%>/store" method="post">
-            <% if @stores != []%>
+          <% if @stores != []%>
+            <form class="form-group" action="/brands/<%=@brand.id%>/store" method="post">
               <label for="brand_name"><h4>Register New Affiliate</h4></label>
               <select class="form-control resize_menu" name="store_name">
                 <% @stores.each do |store| %>
                   <option><%=store.name%></option>
                 <% end %>
               </select>
-            <% end %>
-            <br>
-            <button type="submit" class="btn btn-primary btn-lg">Add Store Affiliate</button>
-          </form>
+              <br>
+              <button type="submit" class="btn btn-primary btn-lg">Add Store Affiliate</button>
+            </form>
+          <% else %>
+          <h2>No stores currently registered</h2>
+          <% end %>
         </center>
       </div>
     </div>
