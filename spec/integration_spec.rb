@@ -82,12 +82,12 @@ describe('index page brand and store navigation') do
   describe('deletes classes', {:type => :feature}) do
     it('deletes a store') do
       visit('/')
-      first(:link, 'Delete Store').click
+      first(:button, 'Delete Store').click
       expect(page).to have_content("Stores and Brands")
     end
     it('deletes a brand') do
       visit('/')
-      first(:link, 'Delete Brand').click
+      first(:button, 'Delete Brand').click
       expect(page).to have_content("Stores and Brands")
     end
   end
