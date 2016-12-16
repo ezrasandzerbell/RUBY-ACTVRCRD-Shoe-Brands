@@ -40,14 +40,18 @@ end
 post('/brands/:id/store') do
   @store = Store.find_by_name(params.fetch("store_name"))
   @brand = Brand.find(params.fetch("id"))
-  @store.brands.push(@brand)
+  if !@store.brands.include?(@brand)
+    @store.brands.push(@brand)
+  end
   erb(:brand_success)
 end
 
 post('/stores/:id/brand') do
   @brand = Brand.find_by_name(params.fetch("brand_name"))
   @store = Store.find(params.fetch("id"))
-  @brand.stores.push(@store)
+  if !@brand.stores.include?(@store)
+    @brand.stores.push(@store)
+  end
   erb(:store_success)
 end
 
