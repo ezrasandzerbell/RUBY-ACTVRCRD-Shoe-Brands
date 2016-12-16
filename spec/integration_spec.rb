@@ -51,3 +51,13 @@ describe('selecting opposite class from dropdown menu and assigning to current c
     end
   end
 end
+
+describe('navigation') do
+  describe('update classes', {:type => :feature}) do
+    it('creates a store') do
+      visit('/')
+      first(:link, 'Update Store Name').click
+      expect(page).to have_content("Hello World")
+    end
+  end
+end

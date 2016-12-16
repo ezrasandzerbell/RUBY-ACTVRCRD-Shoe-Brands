@@ -37,7 +37,7 @@ get('/stores/:id') do
   erb(:store)
 end
 
-post('/brands/:id/store')do
+post('/brands/:id/store') do
   store = Store.find_by_name(params.fetch("store_name"))
   store.update({:brand_id => params.fetch("id")})
   store_id = store.id
@@ -49,11 +49,19 @@ post('/brands/:id/store')do
   erb(:brand)
 end
 
-post('/stores/:id/brand')do
+post('/stores/:id/brand') do
   brand = Brand.find_by_name(params.fetch("brand_name"))
   brand.update({:store_id => params.fetch("id")})
   @store = Store.find(params.fetch("id"))
   @brands = @store.brands
   @stores = Store.all
   erb(:store)
+end
+
+get('/brands/:id/edit') do
+  erb(:brand_edit)
+end
+
+get('/stores/:id/edit') do
+  erb(:store_edit)
 end
