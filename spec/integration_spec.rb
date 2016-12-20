@@ -4,14 +4,14 @@ describe('navigation') do
   describe('routing to index', {:type => :feature}) do
     it('successfully loads index') do
       visit('/')
-      expect(page).to have_content("Stores and Brands")
+      expect(page).to have_content("Foot Warehouse")
     end
     it('clicks on brand object link and navigates to new page') do
       visit('/')
       fill_in("brand_name", :with => "Toms")
       click_button("Register New Brand")
       click_link("Toms")
-      expect(page).to have_content("Toms")
+      expect(page).to have_content("Affiliates:")
     end
   end
 end
@@ -37,17 +37,21 @@ describe('selecting opposite class from dropdown menu and assigning to current c
   describe('assign brands to a store', {:type => :feature}) do
     it('selects brand from dropdown and submits form') do
       visit('/')
-      click_link('Foot Locker')
-      select('Toms', :from => 'brand_name')
+      fill_in("brand_name", :with => "bootsies")
+      click_button("Register New Brand")
+      fill_in("store_name", :with => "Target")
+      click_button("Register New Store")
+      click_link('Target')
+      select('Bootsies', :from => 'brand_name')
       click_button('Add Brand Affiliate')
-      expect(page).to have_content("You added a new affiliate")
+      expect(page).to have_content("You added Bootsies as an affiliate")
     end
     it('fills out store name form and submits') do
       visit('/')
       click_link('Toms')
       select('Foot Locker', :from => 'store_name')
       click_button('Add Store Affiliate')
-      expect(page).to have_content("You added a new affiliate")
+      expect(page).to have_content("You added Foot Locker as an affiliate")
     end
   end
 end
@@ -83,12 +87,12 @@ describe('index page brand and store navigation') do
     it('deletes a store') do
       visit('/')
       first(:button, 'Delete Store').click
-      expect(page).to have_content("Stores and Brands")
+      expect(page).to have_content("Foot Warehouse")
     end
     it('deletes a brand') do
       visit('/')
       first(:button, 'Delete Brand').click
-      expect(page).to have_content("Stores and Brands")
+      expect(page).to have_content("Foot Warehouse")
     end
   end
 end
