@@ -6,5 +6,9 @@ describe(Brand) do
       brand_test = Brand.create({:name => "Nike"})
       expect(brand_test.name).to(eq("Nike"))
     end
+    it("validates presence of description") do
+    brand = Brand.new({:name => ""})
+    expect(brand.save()).to(eq(false))
+    end
   end
 end

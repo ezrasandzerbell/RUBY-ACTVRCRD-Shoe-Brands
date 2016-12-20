@@ -105,7 +105,7 @@ describe('tests for validation and callback on both classes') do
       click_button("Register New Store")
       expect(page).to have_content("Home Depot")
     end
-    it('runs validation test on brand input') do
+    it('runs callback test on brand input') do
       visit('/')
       fill_in("brand_name", :with => "puma sport")
       click_button("Register New Brand")
